@@ -11,8 +11,8 @@ class Telegram {
 
   async apiCall({ method, params, endpoint }) {
     try {
-      const url = this.baseBotUrl + endpoint
-      const { body } = await client({ url, method, ...params })
+      const urlServer = this.baseBotUrl + endpoint
+      const { body } = await client({ urlServer, method, ...params })
 
       //thats is necessary because GOT (http request module) cant work with JSON module when body is form data
       const jsonResult = typeof body == 'string' ? JSON.parse(body) : body
