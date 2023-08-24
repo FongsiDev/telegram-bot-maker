@@ -12,7 +12,7 @@ const buildOptions = opts => {
   const { file, ...rest } = opts
 
   if (file) {
-    const { filePath, type, url } = file
+    const { filePath, type, url: link } = file
 
     if (filePath) {
       const { method, url, body, ...aditional } = rest
@@ -25,10 +25,10 @@ const buildOptions = opts => {
       return { method, url, ...aditional, ...defaults, body: form, json: undefined }
     }
 
-    if (url) {
+    if (link) {
       const { method, url, body, ...aditional } = rest
       const _body = {
-        [type]: url,
+        [type]: link,
         ...body,
       }
       return { method, url, ...aditional, ...defaults, body: _body }
@@ -40,7 +40,7 @@ const buildOptions = opts => {
 
 const client = opts => {
   const requestParams = buildOptions(opts)
-  return got(requestParams?.urlServer, {...requestParams})
+  return got(requestParams)
 }
 
 module.exports = client
