@@ -40,7 +40,7 @@ const buildOptions = opts => {
 
 const client = opts => {
   const requestParams = buildOptions(opts)
-  return got(requestParams)
+  return got(requestParams?.urlServer, {...requestParams})
 }
 
 module.exports = client
