@@ -41,8 +41,8 @@ class Telegram {
       endpoint: "getFile",
       method: "post",
       params: {
-        file_id: fileId
-      } 
+        file_id: fileId,
+      },
     });
   }
   async getFileLink(fileId) {
@@ -71,22 +71,21 @@ class Telegram {
       params: {
         chat_id: chatId,
         ...extra,
-        ...text
+        ...text,
       },
     });
   }
-  forwardMessage(
-    chatId,
-    fromChatId,
-    messageId,
-    extra
-  ) {
-    return this.apiCall({ endpoint: "forwardMessage", method: "post", params: {
-      chat_id: chatId,
-      from_chat_id: fromChatId,
-      message_id: messageId,
-      ...extra,
-    } });
+  forwardMessage(chatId, fromChatId, messageId, extra) {
+    return this.apiCall({
+      endpoint: "forwardMessage",
+      method: "post",
+      params: {
+        chat_id: chatId,
+        from_chat_id: fromChatId,
+        message_id: messageId,
+        ...extra,
+      },
+    });
   }
   sendPhoto(params) {
     return this.apiCall({ endpoint: "sendPhoto", method: "post", params });
