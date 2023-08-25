@@ -75,8 +75,18 @@ class Telegram {
       },
     });
   }
-  forwardMessage(params) {
-    return this.apiCall({ endpoint: "forwardMessage", method: "post", params });
+  forwardMessage(
+    chatId,
+    fromChatId,
+    messageId,
+    extra
+  ) {
+    return this.apiCall({ endpoint: "forwardMessage", method: "post", params: {
+      chat_id: chatId,
+      from_chat_id: fromChatId,
+      message_id: messageId,
+      ...extra,
+    } });
   }
   sendPhoto(params) {
     return this.apiCall({ endpoint: "sendPhoto", method: "post", params });
