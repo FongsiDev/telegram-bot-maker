@@ -64,27 +64,11 @@ class Telegram {
       this.baseUrl
     );
   }
-  sendMessage(chatId, text, extra) {
+  sendMessage(params) {
     return this.apiCall({
       endpoint: "sendMessage",
       method: "post",
-      params: {
-        chat_id: chatId,
-        ...extra,
-        ...text,
-      },
-    });
-  }
-  forwardMessage(chatId, fromChatId, messageId, extra) {
-    return this.apiCall({
-      endpoint: "forwardMessage",
-      method: "post",
-      params: {
-        chat_id: chatId,
-        from_chat_id: fromChatId,
-        message_id: messageId,
-        ...extra,
-      },
+      params,
     });
   }
   sendPhoto(params) {
@@ -111,11 +95,32 @@ class Telegram {
   sendMediaGroup(params) {
     return this.apiCall({ endpoint: "sendMediaGroup", method: "post", params });
   }
-
   sendLocation(params) {
     return this.apiCall({ endpoint: "sendLocation", method: "post", params });
   }
+  sendVenue(params) {
+    return this.apiCall({ endpoint: "sendVenue", method: "post", params });
+  }
+  sendContact(params) {
+    return this.apiCall({ endpoint: "sendContact", method: "post", params });
+  }
+  sendPoll(params) {
+    return this.apiCall({ endpoint: "sendPoll", method: "post", params });
+  }
+  sendChatAction(params) {
+    return this.apiCall({ endpoint: "sendChatAction", method: "post", params });
+  }
+  sendSticker(params) {
+    return this.apiCall({ endpoint: "sendSticker", method: "post", params });
+  }
 
+  forwardMessage(params) {
+    return this.apiCall({
+      endpoint: "forwardMessage",
+      method: "post",
+      params,
+    });
+  }
   editMessageLiveLocation(params) {
     return this.apiCall({
       endpoint: "editMessageLiveLocation",
@@ -131,32 +136,40 @@ class Telegram {
       params,
     });
   }
-
-  sendVenue(params) {
-    return this.apiCall({ endpoint: "sendVenue", method: "post", params });
-  }
-
-  sendContact(params) {
-    return this.apiCall({ endpoint: "sendContact", method: "post", params });
-  }
-
-  sendPoll(params) {
-    return this.apiCall({ endpoint: "sendPoll", method: "post", params });
-  }
-  sendChatAction(params) {
-    return this.apiCall({ endpoint: "sendChatAction", method: "post", params });
-  }
-
   getUserProfilePhotos(params) {
     return this.apiCall({
       endpoint: `getUserProfilePhotos?${queryString.stringify(params)}`,
       method: "get",
     });
   }
-
   editMessageText(params) {
     return this.apiCall({
       endpoint: `editMessageText`,
+      method: "post",
+      params,
+    });
+  }
+  answerCbQuery(callbackQueryId, text, extra) {
+    return this.apiCall({
+      endpoint: "answerCallbackQuery",
+      method: "post",
+      params: {
+        text,
+        callback_query_id: callbackQueryId,
+        ...extra,
+      },
+    });
+  }
+  getMyCommands(params) {
+    return this.apiCall({
+      endpoint: `getMyCommands`,
+      method: "post",
+      params,
+    });
+  }
+  setMyCommands(params) {
+    return this.apiCall({
+      endpoint: `setMyCommands`,
       method: "post",
       params,
     });
