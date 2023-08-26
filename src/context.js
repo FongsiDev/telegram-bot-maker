@@ -272,17 +272,17 @@ class Context extends Telegram {
 
   afterBotReply(lastBotMsg, disable = false) {
     this.lastBotMsg = lastBotMsg;
-    if(!disable) this.triggerBotReply();
+    this.triggerBotReply(disable);
   }
 
-  triggerBotReply() {
+  triggerBotReply(disable = false) {
     if (this.replyListeners.length) {
       this.setReplyListener(
         this.ref(),
         this.replyListeners[0],
         this._addUpdate
       );
-      this.clearFirstReplyListener();
+      if(!disable) this.clearFirstReplyListener();
     }
   }
 
