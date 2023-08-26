@@ -1,7 +1,7 @@
 # telegram-bot-maker
 
 <div>
-  <img width="250" src=https://github.com/tawsbob/telegram-bot-maker/blob/master/docs/the-bot-father.jpg?raw=true">
+  <img width="250" src=https://github.com/FongsiDev/telegram-bot-maker/blob/development/docs/the-bot-father.jpg?raw=true">
 </div>
 
 A nodejs lightweight library wrapper to [telegram bot api](https://core.telegram.org/bots/api)
@@ -9,6 +9,9 @@ A nodejs lightweight library wrapper to [telegram bot api](https://core.telegram
 ## Learn More about telegram bots
 
 if you want learn more about [Telegram bots](https://core.telegram.org/bots)
+
+## Test Api Metode
+Telegram Testing Api Metode [Telegram Bot Sdk](https://telegram-bot-sdk.readme.io)
 
 ## How did it come about?
 
@@ -36,7 +39,7 @@ It's only for long polling bot, **Webhook** will be implemented soon. Feel free 
 ## Install
 
 ```bash
-$ npm install telegram-bot-maker
+npm install github:FongsiDev/telegram-bot-maker
 ```
 
 ## Usage
@@ -96,7 +99,7 @@ bot.on("message", (ctx, update) => {
 
 ## Wait For User reply
 
-![Wait for user reply](https://github.com/tawsbob/telegram-bot-maker/blob/master/docs/reply.gif?raw=true)
+![Wait for user reply](https://github.com/FongsiDev/telegram-bot-maker/blob/development/docs/reply.gif?raw=true)
 
 ctx.waitForReply(handler)
 
@@ -119,7 +122,7 @@ bot.on("message", (ctx, update) => {
 
 ## Creating Menu
 
-![Menu 2x1](https://github.com/tawsbob/telegram-bot-maker/blob/master/docs/menu-exemple-1.png?raw=true)
+![Menu 2x1](https://github.com/FongsiDev/telegram-bot-maker/blob/development/docs/menu-exemple-1.png?raw=true)
 
 ctx.replyWithMenu(MenuSettings)
 
@@ -153,7 +156,7 @@ bot.on("message", (ctx, update) => {
 
 ## Submenu
 
-![Menu 1x1](https://github.com/tawsbob/telegram-bot-maker/blob/master/docs/submenu-exemple.gif?raw=true)
+![Menu 1x1](https://github.com/FongsiDev/telegram-bot-maker/blob/development/docs/submenu-exemple.gif?raw=true)
 
 ```javascript
 bot.on("message", (ctx, update) => {
@@ -209,7 +212,7 @@ bot.on("message", (ctx, update) => {
 
 ## Custom Inline Buttons
 
-![Custom inline btn](https://github.com/tawsbob/telegram-bot-maker/blob/master/docs/custom-inline-btns.gif?raw=true)
+![Custom inline btn](https://github.com/FongsiDev/telegram-bot-maker/blob/development/docs/custom-inline-btns.gif?raw=true)
 
 ```javascript
 bot.on("message", (ctx, update) => {
@@ -243,7 +246,7 @@ bot.on("message", (ctx, update) => {
 
 ## Custom Buttons
 
-![Custom btn](https://github.com/tawsbob/telegram-bot-maker/blob/master/docs/custom-btns.gif?raw=true)
+![Custom btn](https://github.com/FongsiDev/telegram-bot-maker/blob/development/docs/custom-btns.gif?raw=true)
 
 ```javascript
 bot.on("message", (ctx, update) => {
@@ -278,7 +281,7 @@ bot.on("message", (ctx, update) => {
 
 ## send Photos to user
 
-![Send Image](https://github.com/tawsbob/telegram-bot-maker/blob/master/docs/send-img.gif?raw=true)
+![Send Image](https://github.com/FongsiDev/telegram-bot-maker/blob/development/docs/send-img.gif?raw=true)
 
 To send photos to user you must pass url or filePath param.
 
@@ -292,13 +295,13 @@ ctx.reply("Want a photo?").waitForReply(() => {
     },
   });
 });
+// ctx.replyWithImage(), ctx.replyWithVideo(), ctx.replyWithAudio(), ctx.replyWithDocument(), replyWithVideoNote()
 ```
 
 ## Availables Api Methods
 
 - getMe
 - sendMessage
-- forwardMessage
 - sendPhoto
 - sendAudio
 - sendDocument
@@ -308,14 +311,19 @@ ctx.reply("Want a photo?").waitForReply(() => {
 - sendVideoNote
 - sendMediaGroup
 - sendLocation
-- editMessageLiveLocation
-- stopMessageLiveLocation
 - sendVenue
 - sendContact
 - sendPoll
 - sendChatAction
+- sendSticker
+- forwardMessage
+- editMessageLiveLocation
+- stopMessageLiveLocation
 - getUserProfilePhotos
 - editMessageText
+- answerCbQuery
+- getMyCommands
+- setMyCommands
 
 ## Notes
 
