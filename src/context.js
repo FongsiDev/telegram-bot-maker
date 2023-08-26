@@ -287,6 +287,10 @@ class Context extends Telegram {
 
   onError(err) {
     console.warn(err);
+    return { 
+      error: true,
+      message: err?.message || err
+    }
   }
 }
 
