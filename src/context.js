@@ -100,54 +100,42 @@ class Context extends Telegram {
 
   reply(text, params) {
     this.sendMessage(this.contextParams({ text, ...params }))
-      .then((x) => 
-        this.afterBotReply(x, params?.disable_afterBotReply ? true : false
-      ))
+      .then(this.afterBotReply)
       .catch(this.onError);
     return this;
   }
 
   replyWithImage(params) {
     this.sendPhoto(this.contextParams(params))
-      .then((x) => 
-        this.afterBotReply(x, params?.disable_afterBotReply ? true : false
-      ))
+      .then(this.afterBotReply)
       .catch(this.onError);
     return this;
   }
 
   replyWithVideo(params) {
     this.sendVideo(this.contextParams(params))
-      .then((x) => 
-        this.afterBotReply(x, params?.disable_afterBotReply ? true : false
-      ))
+      .then(this.afterBotReply)
       .catch(this.onError);
     return this;
   }
 
   replyWithVideoNote(params) {
     this.sendVideoNote(this.contextParams(params))
-      .then((x) => 
-        this.afterBotReply(x, params?.disable_afterBotReply ? true : false
-      ))
+      .then(this.afterBotReply)
       .catch(this.onError);
     return this;
   }
 
   replyWithAudio(params) {
     this.sendAudio(this.contextParams(params))
-      .then((x) => 
-        this.afterBotReply(x, params?.disable_afterBotReply ? true : false
-      ))
+      .then(this.afterBotReply)
       .catch(this.onError);
     return this;
   }
 
   replyWithDocument(params) {
     this.sendDocument(this.contextParams(params))
-      .then((x) => 
-        this.afterBotReply(x, params?.disable_afterBotReply ? true : false
-      ))
+      .then(this.afterBotReply)
       .catch(this.onError);
     return this;
   }
@@ -161,9 +149,7 @@ class Context extends Telegram {
         ...params,
       })
     )
-      .then((x) => 
-        this.afterBotReply(x, params?.disable_afterBotReply ? true : false
-      ))
+      .then(this.afterBotReply)
       .catch(this.onError);
     return this;
   }
@@ -270,19 +256,19 @@ class Context extends Telegram {
     this.reply(text, markup);
   }
 
-  afterBotReply(lastBotMsg, disable = false) {
+  afterBotReply(lastBotMsg) {
     this.lastBotMsg = lastBotMsg;
-    this.triggerBotReply(disable);
+    this.triggerBotReply();
   }
 
-  triggerBotReply(disable = false) {
+  triggerBotReply() {
     if (this.replyListeners.length) {
       this.setReplyListener(
         this.ref(),
         this.replyListeners[0],
         this._addUpdate
       );
-      if(!disable) this.clearFirstReplyListener();
+      this.clearFirstReplyListener();
     }
   }
 
