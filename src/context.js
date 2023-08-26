@@ -101,7 +101,7 @@ class Context extends Telegram {
   reply(text, params) {
     this.sendMessage(this.contextParams({ text, ...params }))
       .then((x) => 
-        this.afterBotReply(params?.disable_afterBotReply ? true : false
+        this.afterBotReply(x, params?.disable_afterBotReply ? true : false
       ))
       .catch(this.onError);
     return this;
@@ -110,7 +110,7 @@ class Context extends Telegram {
   replyWithImage(params) {
     this.sendPhoto(this.contextParams(params))
       .then((x) => 
-        this.afterBotReply(params?.disable_afterBotReply ? true : false
+        this.afterBotReply(x, params?.disable_afterBotReply ? true : false
       ))
       .catch(this.onError);
     return this;
@@ -119,7 +119,7 @@ class Context extends Telegram {
   replyWithVideo(params) {
     this.sendVideo(this.contextParams(params))
       .then((x) => 
-        this.afterBotReply(params?.disable_afterBotReply ? true : false
+        this.afterBotReply(x, params?.disable_afterBotReply ? true : false
       ))
       .catch(this.onError);
     return this;
@@ -128,7 +128,7 @@ class Context extends Telegram {
   replyWithVideoNote(params) {
     this.sendVideoNote(this.contextParams(params))
       .then((x) => 
-        this.afterBotReply(params?.disable_afterBotReply ? true : false
+        this.afterBotReply(x, params?.disable_afterBotReply ? true : false
       ))
       .catch(this.onError);
     return this;
@@ -137,7 +137,7 @@ class Context extends Telegram {
   replyWithAudio(params) {
     this.sendAudio(this.contextParams(params))
       .then((x) => 
-        this.afterBotReply(params?.disable_afterBotReply ? true : false
+        this.afterBotReply(x, params?.disable_afterBotReply ? true : false
       ))
       .catch(this.onError);
     return this;
@@ -146,7 +146,7 @@ class Context extends Telegram {
   replyWithDocument(params) {
     this.sendDocument(this.contextParams(params))
       .then((x) => 
-        this.afterBotReply(params?.disable_afterBotReply ? true : false
+        this.afterBotReply(x, params?.disable_afterBotReply ? true : false
       ))
       .catch(this.onError);
     return this;
@@ -162,7 +162,7 @@ class Context extends Telegram {
       })
     )
       .then((x) => 
-        this.afterBotReply(params?.disable_afterBotReply ? true : false
+        this.afterBotReply(x, params?.disable_afterBotReply ? true : false
       ))
       .catch(this.onError);
     return this;
